@@ -3,25 +3,27 @@ React Redux TodoList
 
 CI status: ![Build Status](https://travis-ci.org/js-demos/react-redux-todolist-demo.png?branch=master)
 
-A basic es6 project, which includes:
+A basic front-end ES6 project, which includes:
 
 1. webpack
-2. babel
-3. express
-4. jquery
-5. react
+1. babel
+1. react
+1. redux
 
 All the changes to js/jsx files can be hot-reloaded in browser.
 
 ```
-npm install -g babel-cli
 npm install
+npm run webpack
+
+// in another termimal session
 npm start
 ```
 
-Then visit <http://localhost:3000>, you will see `Hello world` on the page.
+Then open <http://localhost:8080>.
 
-If you modify `public/hello.jsx` to change the text, you will see the changes are applied to page instantly.
+Run test:
 
-
-
+```
+npm test
+```

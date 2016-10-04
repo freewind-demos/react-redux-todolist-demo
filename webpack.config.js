@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './public/entry.jsx'
+    './src/entry.jsx'
   ],
   output: {
     path: __dirname + '/public/assets/',
