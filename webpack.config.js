@@ -2,12 +2,10 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './public/entry.jsx',
-    'webpack-hot-middleware/client'
+    './public/entry.jsx'
   ],
   output: {
-    path: __dirname,
-    publicPath: '/assets/',
+    path: __dirname + '/public/assets/',
     filename: 'bundle.js'
   },
   module: {
@@ -18,14 +16,10 @@ module.exports = {
       query: {
         presets: ['es2015', 'react']
       }
+    }, {
+      test: /\.less$/,
+      exclude: /node_modules/,
+      loader: "style!css!less"
     }]
-  },
-  plugins: [
-    // Webpack 1.0
-    new webpack.optimize.OccurenceOrderPlugin(),
-    // Webpack 2.0 fixed this mispelling
-    // new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
-}
+  }
+};

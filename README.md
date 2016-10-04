@@ -1,7 +1,7 @@
-ES6 Project Demo
-=================
+React Redux TodoList
+====================
 
-CI status: ![Build Status](https://travis-ci.org/js-demos/es6-project-demo.png?branch=master)
+CI status: ![Build Status](https://travis-ci.org/js-demos/react-redux-todolist-demo.png?branch=master)
 
 A basic es6 project, which includes:
 
