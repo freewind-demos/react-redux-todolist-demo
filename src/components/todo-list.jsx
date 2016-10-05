@@ -3,10 +3,10 @@ import Todo from './todo.jsx';
 
 export default class TodoList extends Component {
   render() {
-    const {todos} = this.props;
+    const {todos, onEditTodo} = this.props;
     return <div>
       {
-        todos.map((todo, index) => <Todo todo={todo} key={index}/>)
+        todos.map((todo, index) => <Todo key={index} todo={todo} onEditTodo={onEditTodo(index)}/>)
       }
     </div>;
   }

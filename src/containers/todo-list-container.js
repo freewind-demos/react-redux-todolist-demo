@@ -1,6 +1,7 @@
 "use strict";
 import {connect} from 'react-redux';
 import TodoList from '../components/todo-list.jsx';
+import * as actions from '../actions/index';
 
 function mapStateToProps(state) {
   return {
@@ -8,5 +9,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(TodoList);
+function mapDispatchToProps(dispatch) {
+  return {
+    onEditTodo: (index) => (newContent) => dispatch(actions.editTodo(index, newContent))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
 
