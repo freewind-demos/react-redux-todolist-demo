@@ -1,4 +1,4 @@
-import HelloContainer from './containers/hello-container';
+import App from './components/app.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
@@ -9,7 +9,7 @@ const store = createStore(reducers);
 
 ReactDOM.render(
   <Provider store={store}>
-    <HelloContainer />
+    <App />
   </Provider>,
   document.getElementById("content")
 );
