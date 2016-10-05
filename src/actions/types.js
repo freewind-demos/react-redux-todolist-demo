@@ -1,5 +1,5 @@
-const DELETE_FRUIT = 'DELETE_FRUIT';
+const NEW_TODO = 'NEW_TODO';
 
 export default {
-  DELETE_FRUIT
+  NEW_TODO
 }

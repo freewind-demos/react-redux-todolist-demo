@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import TodoInput from './todo-input.jsx';
-import TodoList from './todo-list.jsx';
+import React, {Component} from "react";
+import TodoInputContainer from "../containers/todo-input-container";
+import TodoListContainer from "../containers/todo-list-container";
 
 export default class Body extends Component {
   render() {
     return <div>
-      <TodoInput/>
-      <TodoList/>
+      <TodoInputContainer />
+      <TodoListContainer/>
     </div>;
   }
 }

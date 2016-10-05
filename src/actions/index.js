@@ -1,8 +1,8 @@
 import types from './types';
 
-export function deleteFruit(fruitName) {
+export function newTodo(newTodo) {
   return {
-    type: types.DELETE_FRUIT,
-    fruitName: fruitName
+    type: types.NEW_TODO,
+    content: newTodo
   }
 }
