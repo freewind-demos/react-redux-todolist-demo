@@ -1,21 +1,37 @@
 'use strict';
-import expect from 'expect';
+import chai from 'chai';
 import reducer from '../../src/reducers/index';
+import * as actions from '../../src/actions/index';
+chai.should();
 
 describe('reducer', () => {
 
-  it('returns init store if no state passed in', () => {
-    expect(reducer(undefined, {type: 'any'})).toEqual({
-      fruit: ['Apples', 'Oranges']
+  it('adds a todo', () => {
+    reducer({todos: []}, actions.newTodo('run')).should.deep.equal({
+      todos: [{
+        content: 'run',
+        active: true
+      }]
     })
   });
 
-  it('deletes specified fruit', () => {
-    expect(reducer(
-      {fruit: ['Apples', 'Oranges']},
-      {type: 'DELETE_FRUIT', fruitName: 'Apples'}
-    )).toEqual({
-      fruit: ['Oranges']
+  it('edits a todo', () => {
+    reducer({
+      todos: [{
+        content: 'run1',
+        active: true
+      }, {
+        content: 'run2',
+        active: true
+      }]
+    }, actions.editTodo(1, 'stop')).should.deep.equal({
+      todos: [{
+        content: 'run1',
+        active: true
+      }, {
+        content: 'stop',
+        active: true
+      }]
     })
   })
 
