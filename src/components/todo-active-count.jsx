@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 export default class TodoActiveCount extends Component {
   render() {
-    return <span>X items left</span>;
+    const {activeCount} = this.props;
+    return <span>{activeCount} items left</span>;
   }
 }
