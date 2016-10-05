@@ -14,9 +14,9 @@ export default class Todo extends Component {
     return <div>
       <input type="checkbox"/>
       { editing
-        ? <input type="text" defaultValue={todo.content}
+        ? <input className="edit" type="text" defaultValue={todo.content}
                  onKeyPress={this._onEnter.bind(this)}/>
-        : <span onDoubleClick={() => this.setState({editing: true})}>{todo.content}</span>
+        : <span className="content" onDoubleClick={() => this.setState({editing: true})}>{todo.content}</span>
       }
     </div>;
   }
