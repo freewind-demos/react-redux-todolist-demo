@@ -1,17 +1,8 @@
 "use strict";
 
-import React from 'react';
-import TodoActiveCount from '../../src/components/todo-active-count.jsx';
-import chai from 'chai';
-import spies  from 'chai-spies';
-import {mount} from 'enzyme';
-import jsdomGlobal from 'jsdom-global';
-import chaiEnzyme from 'chai-enzyme';
-
-jsdomGlobal();
-chai.should();
-chai.use(spies);
-chai.use(chaiEnzyme());
+import React from "react";
+import TodoActiveCount from "../../src/components/todo-active-count.jsx";
+import {mount} from "enzyme";
 
 describe('<TodoActiveCount />', () => {
 

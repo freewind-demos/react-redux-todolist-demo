@@ -7,7 +7,7 @@
     "start": "http-server ./public || exit 0",
     "webpack": "webpack",
     "webpack:watch": "webpack -w",
-    "test": "mocha-webpack --webpack-config webpack.config-test.js --recursive --require ./spec/test_helper.js \"spec\""
+    "test": "mocha-webpack --webpack-config webpack.config-test.js --recursive --require ./spec/test-helper.js \"spec\""
   },
   "keywords": [],
   "author": "",

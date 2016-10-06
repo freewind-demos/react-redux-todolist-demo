@@ -3,11 +3,7 @@
 import React from 'react';
 import Hello from '../../src/components/Hello.jsx';
 import chai from 'chai';
-import spies  from 'chai-spies';
 import {shallow} from 'enzyme';
-
-chai.should();
-chai.use(spies);
 
 describe('<Hello />', () => {
 

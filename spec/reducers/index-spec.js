@@ -1,8 +1,6 @@
 'use strict';
-import chai from 'chai';
-import reducer from '../../src/reducers/index';
-import * as actions from '../../src/actions/index';
-chai.should();
+import reducer from "../../src/reducers/index";
+import * as actions from "../../src/actions/index";
 
 describe('reducer', () => {
 
