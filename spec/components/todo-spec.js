@@ -7,13 +7,17 @@ import {mount} from "enzyme";
 
 describe('<Todo />', () => {
 
-  let onEditTodo, onToggleTodo, wrapper, input;
+  let onEditTodo, onToggleTodo, onDeleteTodo, wrapper, input;
 
   beforeEach(()=> {
     onEditTodo = chai.spy();
     onToggleTodo = chai.spy();
+    onDeleteTodo = chai.spy();
     const todo = {content: 'test-todo', active: true};
-    wrapper = mount(<Todo onEditTodo={onEditTodo} onToggleTodo={onToggleTodo} todo={todo}/>);
+    wrapper = mount(<Todo onEditTodo={onEditTodo}
+                          onToggleTodo={onToggleTodo}
+                          onDeleteTodo={onDeleteTodo}
+                          todo={todo}/>);
   });
 
   it('shows todo content', () => {
@@ -39,6 +43,11 @@ describe('<Todo />', () => {
   it('calls onToggleTodo when checkbox state changes', () => {
     wrapper.find('.todo-state').simulate('change', {target: {value: true}});
     onToggleTodo.should.have.been.called.once();
+  });
+
+  it('calls onDeleteTodo when click on the delete button', () => {
+    wrapper.find('button.todo-delete').simulate('click');
+    onDeleteTodo.should.have.been.called.once();
   })
 
 });

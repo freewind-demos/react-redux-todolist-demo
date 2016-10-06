@@ -23,3 +23,10 @@ export function toggleTodo(index) {
     index
   }
 }
+
+export function deleteTodo(index) {
+  return {
+    type: types.DELETE_TODO,
+    index
+  }
+}

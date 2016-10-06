@@ -18,7 +18,7 @@ export default class Todo extends Component {
       completed,
       content: true
     });
-    return <div>
+    return <div className="todo-item">
       <input className="todo-state" type="checkbox" defaultChecked={completed}
              onChange={() => this.props.onToggleTodo()}/>
       { editing
@@ -27,6 +27,7 @@ export default class Todo extends Component {
         :
         <span className={todoContentClasses} onDoubleClick={() => this.setState({editing: true})}>{todo.content}</span>
       }
+      <button className="todo-delete" onClick={() => this.props.onDeleteTodo()}>X</button>
     </div>;
   }
 

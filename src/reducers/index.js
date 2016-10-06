@@ -53,6 +53,12 @@ function _handleToggleTodo(state, action) {
   })
 }
 
+function _handleDeleteTodo(state, action) {
+  return Object.assign({}, state, {
+    todos: state.todos.filter((todo, index) => index !== action.index)
+  });
+}
+
 export default function (state = initStore, action) {
   switch (action.type) {
     case actionTypes.NEW_TODO:
@@ -61,6 +67,8 @@ export default function (state = initStore, action) {
       return _handleEditTodo(state, action);
     case actionTypes.TOGGLE_TODO:
       return _handleToggleTodo(state, action);
+    case actionTypes.DELETE_TODO:
+      return _handleDeleteTodo(state, action);
     default:
       return state;
   }

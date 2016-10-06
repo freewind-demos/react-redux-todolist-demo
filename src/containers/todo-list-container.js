@@ -12,7 +12,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onEditTodo: (index) => (newContent) => dispatch(actions.editTodo(index, newContent)),
-    onToggleTodo: (index) => () => dispatch(actions.toggleTodo(index))
+    onToggleTodo: (index) => () => dispatch(actions.toggleTodo(index)),
+    onDeleteTodo: (index) => () => dispatch(actions.deleteTodo(index))
+
   }
 }
 

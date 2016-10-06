@@ -1,3 +1,12 @@
 .completed {
   text-decoration: line-through;
 }
+
+.todo-item {
+  .todo-delete {
+    display: none;
+  }
+  &:hover .todo-delete {
+    display: inline;
+  }
+}
