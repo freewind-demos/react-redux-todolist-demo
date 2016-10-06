@@ -15,12 +15,13 @@ chai.use(chaiEnzyme());
 
 describe('<Todo />', () => {
 
-  let onEditTodo, wrapper, input;
+  let onEditTodo, onToggleTodo, wrapper, input;
 
   beforeEach(()=> {
     onEditTodo = chai.spy();
+    onToggleTodo = chai.spy();
     const todo = {content: 'test-todo', active: true};
-    wrapper = mount(<Todo onEditTodo={onEditTodo} todo={todo}/>);
+    wrapper = mount(<Todo onEditTodo={onEditTodo} onToggleTodo={onToggleTodo} todo={todo}/>);
   });
 
   it('shows todo content', () => {
@@ -42,5 +43,10 @@ describe('<Todo />', () => {
     input.simulate('keypress', {charCode: 13});
     onEditTodo.should.have.been.called.with('test-todo-2');
   });
+
+  it('calls onToggleTodo when checkbox state changes', () => {
+    wrapper.find('.todo-state').simulate('change', {target: {value: true}});
+    onToggleTodo.should.have.been.called.once();
+  })
 
 });

@@ -11,7 +11,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onEditTodo: (index) => (newContent) => dispatch(actions.editTodo(index, newContent))
+    onEditTodo: (index) => (newContent) => dispatch(actions.editTodo(index, newContent)),
+    onToggleTodo: (index) => () => dispatch(actions.toggleTodo(index))
   }
 }
 

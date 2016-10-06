@@ -15,8 +15,6 @@ All the changes to js/jsx files can be hot-reloaded in browser.
 ```
 npm install
 npm run webpack
-
-// in another termimal session
 npm start
 ```
 
@@ -26,4 +24,10 @@ Run test:
 
 ```
 npm test
+```
+
+For dev:
+
+```
+npm run webpack:watch
 ```

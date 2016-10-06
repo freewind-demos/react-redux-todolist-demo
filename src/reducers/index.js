@@ -39,12 +39,28 @@ function _handleEditTodo(state, action) {
   })
 }
 
+function _handleToggleTodo(state, action) {
+  return Object.assign({}, state, {
+    todos: state.todos.map((todo, index) => {
+      if (index === action.index) {
+        return Object.assign({}, todo, {
+          active: !todo.active
+        });
+      } else {
+        return todo;
+      }
+    })
+  })
+}
+
 export default function (state = initStore, action) {
   switch (action.type) {
     case actionTypes.NEW_TODO:
       return _handleNewTodo(state, action);
     case actionTypes.EDIT_TODO:
       return _handleEditTodo(state, action);
+    case actionTypes.TOGGLE_TODO:
+      return _handleToggleTodo(state, action);
     default:
       return state;
   }

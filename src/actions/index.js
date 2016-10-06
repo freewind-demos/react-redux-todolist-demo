@@ -16,3 +16,10 @@ export function editTodo(index, newContent) {
     content: newContent
   }
 }
+
+export function toggleTodo(index) {
+  return {
+    type: types.TOGGLE_TODO,
+    index
+  }
+}

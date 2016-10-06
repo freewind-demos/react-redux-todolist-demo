@@ -33,6 +33,26 @@ describe('reducer', () => {
         active: true
       }]
     })
-  })
+  });
+
+  it('toggles a todo', () => {
+    reducer({
+      todos: [{
+        content: 'run1',
+        active: true
+      }, {
+        content: 'run2',
+        active: true
+      }]
+    }, actions.toggleTodo(1)).should.deep.equal({
+      todos: [{
+        content: 'run1',
+        active: true
+      }, {
+        content: 'run2',
+        active: false
+      }]
+    })
+  });
 
 });

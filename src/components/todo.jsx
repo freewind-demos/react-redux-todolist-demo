@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import classNames from 'classnames';
+import './todo.less';
 
 export default class Todo extends Component {
   constructor(props) {
@@ -11,12 +13,19 @@ export default class Todo extends Component {
   render() {
     const {editing} = this.state;
     const {todo} = this.props;
+    const completed = !todo.active;
+    const todoContentClasses = classNames({
+      completed,
+      content: true
+    });
     return <div>
-      <input type="checkbox"/>
+      <input className="todo-state" type="checkbox" defaultChecked={completed}
+             onChange={() => this.props.onToggleTodo()}/>
       { editing
         ? <input className="edit" type="text" defaultValue={todo.content}
                  onKeyPress={this._onEnter.bind(this)}/>
-        : <span className="content" onDoubleClick={() => this.setState({editing: true})}>{todo.content}</span>
+        :
+        <span className={todoContentClasses} onDoubleClick={() => this.setState({editing: true})}>{todo.content}</span>
       }
     </div>;
   }

@@ -1,12 +1,13 @@
 {
-  "name": "es6-react-redux-project-demo",
+  "name": "react-redux-todolist-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "http-server ./public || exit 0",
-    "webpack": "webpack -w",
-    "test": "mocha --compilers js:babel-core/register --recursive spec"
+    "webpack": "webpack",
+    "webpack:watch": "webpack -w",
+    "test": "mocha-webpack --webpack-config webpack.config-test.js --recursive --require ./spec/test_helper.js \"spec\""
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "chai": "3.5.0",
     "chai-enzyme": "0.5.2",
     "chai-spies": "0.7.1",
+    "classnames": "^2.2.5",
     "css-loader": "0.23.1",
     "enzyme": "2.4.1",
     "http-server": "0.9.0",
@@ -26,9 +28,11 @@
     "less": "2.7.1",
     "less-loader": "2.2.3",
     "mocha": "3.1.0",
+    "mocha-webpack": "^0.6.0",
     "react-addons-test-utils": "15.3.2",
     "style-loader": "0.13.1",
-    "webpack": "1.13.1"
+    "webpack": "1.13.1",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "lodash": "4.14.1",
