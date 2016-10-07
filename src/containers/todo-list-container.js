@@ -4,9 +4,12 @@ import TodoList from '../components/todo-list.jsx';
 import * as actions from '../actions/index';
 
 function mapStateToProps(state) {
-  return {
-    todos: state.todos
-  };
+  let filteredTodos = state.todos;
+  if (state.filter) {
+    const active = state.filter === 'active';
+    filteredTodos = state.todos.filter(todo => todo.active === active);
+  }
+  return {todos: filteredTodos};
 }
 
 function mapDispatchToProps(dispatch) {

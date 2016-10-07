@@ -30,3 +30,11 @@ export function deleteTodo(index) {
     index
   }
 }
+
+export function filterTodos(filter) {
+  return {
+    type: types.FILTER_TODOS,
+    filter
+  }
+}
+

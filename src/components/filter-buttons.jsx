@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import AllButton from './all-button.jsx';
-import ActiveButton from './active-button.jsx';
-import CompletedButton from './completed-button.jsx';
+import FilterButtonContainer from '../containers/filter-button-container';
 
 export default class FilterButtons extends Component {
+
   render() {
     return <span>
-      <AllButton />
-      <ActiveButton />
-      <CompletedButton />
+      <FilterButtonContainer name="All" todoFilter=""/>
+      <FilterButtonContainer name="Active" todoFilter="active"/>
+      <FilterButtonContainer name="Completed" todoFilter="completed"/>
     </span>;
   }
+
 }
