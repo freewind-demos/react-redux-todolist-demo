@@ -24,6 +24,7 @@ const initStore = {
 function _handleNewTodo(state, action) {
   return Object.assign({}, state, {
     todos: _.concat(state.todos, {
+      id: nextId(),
       content: action.content,
       active: true
     })

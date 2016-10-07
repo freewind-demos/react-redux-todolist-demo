@@ -13,7 +13,7 @@ describe('<Todo />', () => {
     onEditTodo = chai.spy();
     onToggleTodo = chai.spy();
     onDeleteTodo = chai.spy();
-    const todo = {content: 'test-todo', active: true};
+    const todo = {id: 'uuid1', content: 'test-todo', active: true};
     wrapper = mount(<Todo onEditTodo={onEditTodo}
                           onToggleTodo={onToggleTodo}
                           onDeleteTodo={onDeleteTodo}
@@ -37,17 +37,17 @@ describe('<Todo />', () => {
     var input = wrapper.find("input.edit");
     input.get(0).value = "test-todo-2";
     input.simulate('keypress', {charCode: 13});
-    onEditTodo.should.have.been.called.with('test-todo-2');
+    onEditTodo.should.have.been.called.with('uuid1', 'test-todo-2');
   });
 
   it('calls onToggleTodo when checkbox state changes', () => {
     wrapper.find('.todo-state').simulate('change', {target: {value: true}});
-    onToggleTodo.should.have.been.called.once();
+    onToggleTodo.should.have.been.called.with('uuid1');
   });
 
   it('calls onDeleteTodo when click on the delete button', () => {
     wrapper.find('button.todo-delete').simulate('click');
-    onDeleteTodo.should.have.been.called.once();
+    onDeleteTodo.should.have.been.called.with('uuid1');
   })
 
 });

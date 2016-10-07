@@ -4,52 +4,44 @@ import * as actions from "../../src/actions/index";
 
 describe('reducer', () => {
 
+  const initStore = {
+    todos: [
+      {id: 'uuid1', content: 'run1', active: true},
+      {id: 'uuid2', content: 'run2', active: true}
+    ]
+  };
+
   it('adds a todo', () => {
-    reducer({todos: []}, actions.newTodo('run')).should.deep.equal({
-      todos: [
-        {content: 'run', active: true}
-      ]
-    })
+    const newTodos = reducer({todos: []}, actions.newTodo('run'));
+    newTodos.todos.should.have.length(1);
+    newTodos.todos[0].id.should.be.a('string');
+    newTodos.todos[0].should.contain({content: 'run', active: true});
   });
 
   it('edits a todo', () => {
-    reducer({
+    reducer(initStore, actions.editTodo('uuid2', 'stop')).should.deep.equal({
       todos: [
-        {content: 'run1', active: true},
-        {content: 'run2', active: true}
-      ]
-    }, actions.editTodo(1, 'stop')).should.deep.equal({
-      todos: [
-        {content: 'run1', active: true},
-        {content: 'stop', active: true}
+        {id: 'uuid1', content: 'run1', active: true},
+        {id: 'uuid2', content: 'stop', active: true}
       ]
     })
   });
 
   it('toggles a todo', () => {
-    reducer({
+    reducer(initStore, actions.toggleTodo('uuid2')).should.deep.equal({
       todos: [
-        {content: 'run1', active: true},
-        {content: 'run2', active: true}
-      ]
-    }, actions.toggleTodo(1)).should.deep.equal({
-      todos: [
-        {content: 'run1', active: true},
-        {content: 'run2', active: false}
+        {id: 'uuid1', content: 'run1', active: true},
+        {id: 'uuid2', content: 'run2', active: false}
       ]
     })
   });
 
   it('deletes a todo', () => {
-    reducer({
+    reducer(initStore, actions.deleteTodo('uuid2')).should.deep.equal({
       todos: [
-        {content: 'run1', active: true},
-        {content: 'run2', active: true}
-      ]
-    }, actions.deleteTodo(1)).should.deep.equal({
-      todos: [
-        {content: 'run1', active: true}
+        {id: 'uuid1', content: 'run1', active: true}
       ]
     })
   })
+
 });
