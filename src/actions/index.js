@@ -1,6 +1,6 @@
 "use strict";
 
-import types from './types';
+import * as types from '../constants/action-types';
 
 export function newTodo(newTodo) {
   return {
@@ -9,25 +9,25 @@ export function newTodo(newTodo) {
   }
 }
 
-export function editTodo(index, newContent) {
+export function editTodo(id, newContent) {
   return {
     type: types.EDIT_TODO,
-    index,
+    id,
     content: newContent
   }
 }
 
-export function toggleTodo(index) {
+export function toggleTodo(id) {
   return {
     type: types.TOGGLE_TODO,
-    index
+    id
   }
 }
 
-export function deleteTodo(index) {
+export function deleteTodo(id) {
   return {
     type: types.DELETE_TODO,
-    index
+    id
   }
 }
 

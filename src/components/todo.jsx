@@ -18,24 +18,27 @@ export default class Todo extends Component {
       completed,
       content: true
     });
-    return <div className="todo-item">
+    return <div>
       <input className="todo-state" type="checkbox" defaultChecked={completed}
-             onChange={() => this.props.onToggleTodo()}/>
-      { editing
-        ? <input className="edit" type="text" defaultValue={todo.content}
-                 onKeyPress={this._onEnter.bind(this)}/>
-        :
-        <span className={todoContentClasses} onDoubleClick={() => this.setState({editing: true})}>{todo.content}</span>
-      }
-      <button className="todo-delete" onClick={() => this.props.onDeleteTodo()}>X</button>
+             onChange={() => this.props.onToggleTodo(todo.id)}/>
+      <span className="todo-content">
+        { editing
+          ? <input className="edit" type="text" defaultValue={todo.content}
+                   onKeyPress={this._onEnter.bind(this)}/>
+          :
+          <span className={todoContentClasses}
+                onDoubleClick={() => this.setState({editing: true})}>{todo.content}</span>
+        }
+        <button className="todo-delete" onClick={() => this.props.onDeleteTodo(todo.id)}>X</button>
+      </span>
     </div>;
   }
 
   _onEnter(event) {
-    const {onEditTodo} = this.props;
+    const {todo, onEditTodo} = this.props;
     if (event.charCode === 13) {
       const newContent = event.target.value;
-      onEditTodo(newContent);
+      onEditTodo(todo.id, newContent);
       this.setState({
         editing: false
       });

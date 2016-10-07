@@ -1,19 +1,24 @@
 "use strict";
-import actionTypes from '../actions/types';
+import * as actionTypes from '../constants/action-types';
+import * as filterTypes from '../constants/filter-types';
+import nextId from '../utils/next-id';
 import _ from 'lodash';
 
 const initStore = {
   todos: [{
+    id: nextId(),
     content: '吃饭',
     active: true
   }, {
+    id: nextId(),
     content: '学习',
     active: true
   }, {
+    id: nextId(),
     content: '睡觉',
     active: false
   }],
-  filter: '' // ''|'active'|'completed'
+  filter: filterTypes.ALL
 };
 
 function _handleNewTodo(state, action) {
@@ -27,8 +32,8 @@ function _handleNewTodo(state, action) {
 
 function _handleEditTodo(state, action) {
   return Object.assign({}, state, {
-    todos: state.todos.map((todo, index) => {
-      if (index === action.index) {
+    todos: state.todos.map(todo => {
+      if (todo.id === action.id) {
         return Object.assign({}, todo, {
           content: action.content
         });
@@ -41,8 +46,8 @@ function _handleEditTodo(state, action) {
 
 function _handleToggleTodo(state, action) {
   return Object.assign({}, state, {
-    todos: state.todos.map((todo, index) => {
-      if (index === action.index) {
+    todos: state.todos.map(todo => {
+      if (todo.id === action.id) {
         return Object.assign({}, todo, {
           active: !todo.active
         });
@@ -55,7 +60,7 @@ function _handleToggleTodo(state, action) {
 
 function _handleDeleteTodo(state, action) {
   return Object.assign({}, state, {
-    todos: state.todos.filter((todo, index) => index !== action.index)
+    todos: state.todos.filter(todo => todo.id !== action.id)
   });
 }
 
