@@ -5,7 +5,7 @@ import ClearCompleteButton from './clean-complete-button.jsx';
 
 export default class Footer extends Component {
   render() {
-    return <div>
+    return <div className="footer">
       <TodoActiveCountContainer/>
       <FilterButtons/>
       <ClearCompleteButton/>
