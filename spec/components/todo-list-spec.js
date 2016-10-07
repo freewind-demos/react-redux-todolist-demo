@@ -3,7 +3,7 @@
 import React from "react";
 import TodoList from "../../src/components/todo-list.jsx";
 import {mount} from "enzyme";
-import chai from "chai";
+import sinon from 'sinon';
 import {Provider} from "react-redux";
 
 describe('<TodoList />', () => {
@@ -15,9 +15,9 @@ describe('<TodoList />', () => {
     ];
 
     const mockStore = {
-      dispatch: chai.spy(),
-      getState: chai.spy(),
-      subscribe: chai.spy()
+      dispatch: sinon.spy(),
+      getState: sinon.spy(),
+      subscribe: sinon.spy()
     };
     const wrapper = mount(
       <Provider store={mockStore}>

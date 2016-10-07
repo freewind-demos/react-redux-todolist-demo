@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Hello from '../../src/components/Hello.jsx';
-import chai from 'chai';
+import sinon from 'sinon';
 import {shallow} from 'enzyme';
 
 describe('<Hello />', () => {
@@ -14,9 +14,9 @@ describe('<Hello />', () => {
   });
 
   it('calls onFruitDelete if deletes a fruit', () => {
-    const spy = chai.spy();
+    const spy = sinon.spy();
     const wrapper = shallow(<Hello fruit={['AAA', 'BBB']} onDeleteFruit={spy}/>);
     wrapper.find('button[title="delete"]').first().simulate('click');
-    spy.should.have.been.called.with('AAA');
+    spy.should.have.been.calledWith('AAA');
   })
 });

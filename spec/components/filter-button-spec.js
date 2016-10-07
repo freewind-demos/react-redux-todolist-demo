@@ -2,7 +2,7 @@
 
 import React from "react";
 import FilterButton from "../../src/components/filter-button.jsx";
-import chai from "chai";
+import sinon from 'sinon';
 import {mount} from "enzyme";
 
 describe('<FilterButton />', () => {
@@ -10,7 +10,7 @@ describe('<FilterButton />', () => {
   let filterTodos;
 
   beforeEach(()=> {
-    filterTodos = chai.spy();
+    filterTodos = sinon.spy();
   });
 
   it('shows the button name', () => {
@@ -39,7 +39,7 @@ describe('<FilterButton />', () => {
                                         forFilter="active" globalFilter="completed"
                                         filterTodos={filterTodos}/>);
     wrapper.find('button').simulate('click');
-    filterTodos.should.have.been.called.with('active');
+    filterTodos.should.have.been.calledWith('active');
   });
 
 });

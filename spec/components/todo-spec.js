@@ -2,7 +2,7 @@
 
 import React from "react";
 import Todo from "../../src/components/todo.jsx";
-import chai from "chai";
+import sinon from 'sinon';
 import {mount} from "enzyme";
 
 describe('<Todo />', () => {
@@ -10,9 +10,9 @@ describe('<Todo />', () => {
   let onEditTodo, onToggleTodo, onDeleteTodo, wrapper, input;
 
   beforeEach(()=> {
-    onEditTodo = chai.spy();
-    onToggleTodo = chai.spy();
-    onDeleteTodo = chai.spy();
+    onEditTodo = sinon.spy();
+    onToggleTodo = sinon.spy();
+    onDeleteTodo = sinon.spy();
     const todo = {id: 'uuid1', content: 'test-todo', active: true};
     wrapper = mount(<Todo onEditTodo={onEditTodo}
                           onToggleTodo={onToggleTodo}
@@ -37,17 +37,17 @@ describe('<Todo />', () => {
     var input = wrapper.find("input.edit");
     input.get(0).value = "test-todo-2";
     input.simulate('keypress', {charCode: 13});
-    onEditTodo.should.have.been.called.with('uuid1', 'test-todo-2');
+    onEditTodo.should.have.been.calledWith('uuid1', 'test-todo-2');
   });
 
   it('calls onToggleTodo when checkbox state changes', () => {
     wrapper.find('.todo-state').simulate('change', {target: {value: true}});
-    onToggleTodo.should.have.been.called.with('uuid1');
+    onToggleTodo.should.have.been.calledWith('uuid1');
   });
 
   it('calls onDeleteTodo when click on the delete button', () => {
     wrapper.find('button.todo-delete').simulate('click');
-    onDeleteTodo.should.have.been.called.with('uuid1');
+    onDeleteTodo.should.have.been.calledWith('uuid1');
   })
 
 });

@@ -1,11 +1,11 @@
 const jsdomGlobal = require('jsdom-global');
 const chai = require('chai');
-const spies = require('chai-spies');
 const chaiEnzyme = require('chai-enzyme');
+const sinonChai = require('sinon-chai');
 
 jsdomGlobal();
 
 chai.should();
-chai.use(spies);
+chai.use(sinonChai);
 chai.use(chaiEnzyme());
 
