@@ -71,6 +71,12 @@ function _handleFilterTodos(state, action) {
   });
 }
 
+function _handleClearCompleteTodos(state) {
+  return Object.assign({}, state, {
+    todos: state.todos.filter(todo=> todo.active)
+  });
+}
+
 export default function (state = initStore, action) {
   switch (action.type) {
     case actionTypes.NEW_TODO:
@@ -83,6 +89,8 @@ export default function (state = initStore, action) {
       return _handleDeleteTodo(state, action);
     case actionTypes.FILTER_TODOS:
       return _handleFilterTodos(state, action);
+    case actionTypes.CLEAR_COMPLETE_TODOS:
+      return _handleClearCompleteTodos(state);
     default:
       return state;
   }

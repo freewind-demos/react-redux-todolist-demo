@@ -38,3 +38,8 @@ export function filterTodos(filter) {
   }
 }
 
+export function clearCompleteTodos() {
+  return {
+    type: types.CLEAR_COMPLETE_TODOS
+  }
+}
